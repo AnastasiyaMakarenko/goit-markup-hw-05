@@ -114,6 +114,12 @@ header {
   align-items: center;
 }
 
+.link {
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .site-nav .link {
   display: block;
   padding: 32px 0;
@@ -124,6 +130,7 @@ header {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
 }
 
 .site-nav>li {
@@ -141,7 +148,23 @@ header {
 
 .site-nav .link.curent {
   color: var(--accent-color);
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
+
+/* добавляет подчёркиваение под текущим пунктом меню*/
+
+.site-nav .link.curent::after{
+  position: absolute;
+  bottom: 0;
+  content: '';
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
+
 
 /*Контакти*/
 
@@ -161,6 +184,7 @@ header {
 
   display: flex;
   align-items: center;
+
 }
 
 .header-contact:hover,
@@ -171,6 +195,10 @@ header {
 
 .top-contact.list>li:first-child {
   margin-right: 50px;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -178,6 +206,10 @@ header {
 
 .studio-icon{
   margin-right: 10px;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ======== END HEADER 2 ======== */
@@ -224,6 +256,10 @@ header {
   background-color: #188ce8;
   color: var(--main-background-color-light);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-btn:hover,
@@ -232,6 +268,70 @@ header {
   color: var(--main-background-color-light);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
+
+/* модальное окно */
+
+.backdrop{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(47, 48, 58, 0.8);;
+}
+
+.backdrop.is-hidden{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal-wrapper{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 8px;
+  width: 528px; 
+  height: 581px;
+  background-color: var(--main-background-color-light);
+  border-radius: 4px;
+
+  transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1), visibility 350ms cubic-bezier(0.4, 0, 0.2, 1)
+
+}
+
+.modal-form-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+
+  justify-content: center;
+  align-items: center;
+
+  
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+
+  cursor: pointer;
+}
+
+/*анимация появления модального окна*/
+
+.backdrop.is-hidden .modal-wrapper {
+  transform: translate(-50%, -50%) scale(0.4);
+  opacity: 0;
+}
+
+.backdrop .modal-wrapper {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+} 
 
 /* ======== END HERO 3 ======== */
 
@@ -332,15 +432,19 @@ header {
 }
 
 .clients-link {
+  display: flex;
   width: 170px;
   height: 92px;
-  border: 1px solid #AFB1B8;
-  border-radius: 4px;
-  display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid #AFB1B8;
+  border-radius: 4px;
   fill: #AFB1B8;
-}
+
+  transition-property: border-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
 .clients-link:hover,
 .clients-link:focus{
@@ -369,7 +473,29 @@ fill: #2196F3;
 
 /* добавляет заголовок поверх изображения */
 
+.services-item{
+  position: relative;
+}
 
+.service-card{
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  background-color: rgba(47, 48, 58, 0.8);
+}
+
+.service-title{
+  display: flex;
+  color: #ffffff;
+  text-align: center;
+  align-items: center;
+  margin: 0 auto;
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
 
 /* ======== END ABOUT SERVICES 5 ======== */
 
@@ -459,6 +585,8 @@ fill: #2196F3;
 
   background-color: #ffffff;
   border-radius: 50%;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /*цвет фона иконки при наведении*/
@@ -481,9 +609,6 @@ fill: #2196F3;
   fill: #fff;
 
 }
-
-
-
 
 /* ======== END ABOUT TEAM 6 ======== */
 
@@ -574,6 +699,8 @@ footer .logo {
   fill: var(--main-background-color-light);
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-icon:hover,
@@ -613,6 +740,10 @@ background-color: var(--accent-color);
 
   background-color: var(--situative-background-color);
   color: var(--primary-text-color-theme-light);
+
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+  background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), 
+  box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-portfolio-btn:hover,
@@ -666,7 +797,7 @@ background-color: var(--accent-color);
 }
 
 .project-link {
-  display: inline-block;
+  display: block;
   font-family: var(--primary-font-family);
   text-decoration: none;
 }
@@ -709,5 +840,32 @@ background-color: var(--accent-color);
 .project-link:focus{
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* скрытое описание карточки */
+
+.open-text {
+  position: absolute;
+  top: 0;
+  background-color: rgba(33, 150, 243, 0.9);
+  color: #FFFFFF;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.55;
+  padding: 63px 24px;
+  height: 100%;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* вызывает появление анимации на карточке */
+
+  .project-link:hover .open-text{
+    transform: translateY(0%);
+  }
 
 /* ======== END PORTFOLIO ITEMS 9 ======== */
