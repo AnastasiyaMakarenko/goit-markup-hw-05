@@ -185,17 +185,15 @@ header {
   display: flex;
   align-items: center;
 
+  transition-property: fill, color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .header-contact:hover,
 .header-contact:focus {
   color: var(--accent-color);
   fill: var(--accent-color);
-
-  transition-property: fill, color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
 }
 
 .top-contact.list>li:first-child {
@@ -207,10 +205,6 @@ header {
 
 .studio-icon{
   margin-right: 10px;
-
-  transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ======== END HEADER 2 ======== */
@@ -725,6 +719,10 @@ background-color: var(--accent-color);
   display: block;
   font-family: var(--primary-font-family);
   text-decoration: none;
+
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-link :hover,
@@ -764,10 +762,6 @@ background-color: var(--accent-color);
 .project-link:hover,
 .project-link:focus{
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
-  transition-property: box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-card {
